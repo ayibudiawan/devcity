@@ -1,0 +1,6 @@
+<% posts.each do |post| %>
+  <p><%= post.description %></p>
+  <small class="text-muted">Posted by <%= post.username %> on <%= post.created_at.strftime("%d-%m-%Y") %></small>
+  <hr>
+<% end %>
+<%= paginate posts, theme: 'twitter-bootstrap-4' %>

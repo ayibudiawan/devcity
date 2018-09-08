@@ -1,0 +1,47 @@
+<nav class="navbar navbar-expand-lg fixed-top">
+  <div class="container">
+    <a class="navbar-brand" href="<%= root_path %>"><%= image_tag "Logo.png", :alt => "Logo" %></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <ul class="navbar-nav ml-auto">
+      <% if current_user.present? %>
+        <li class="nav-item" style="float: left; margin: 20px;">
+          <%= link_to "Timelines", timelines_path %>
+        </li>
+        <%= form_for(timelines_path, :url => {:controller => "timelines", :action => "index"}, html: { method: :get, class: "form-inline", style: "margin-right: 20px;" }) do %>
+          <div class="form-group">
+            <%= text_field_tag :search, @search, placeholder: "Search users or posts", class: "form-control", :required => true %>
+          </div>
+        <% end %>
+        <div class="dropdown">
+          <a href="#" class="btn btn-info dropdown-toggle" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <%= image_tag current_user.profile_picture.thumb.url, :alt => "User Image", :class => "img-thumbnail rounded", :style => "max-width: 50px;" %>
+            <span><%= current_user.email %></span>
+          </a>
+          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuLink">
+            <%= link_to "Log out", destroy_user_session_path, :method => :DELETE, :class => "dropdown-item" %>
+            <%= link_to "Edit Profile", edit_user_registration_path, :class => "dropdown-item" %>
+          </div>
+        </div>
+      <% else %>
+        <li class="nav-item">
+          <%= link_to "Log in", new_user_session_path, :class => "btn btn-success" %>
+        </li>
+        <li class="nav-item">
+          <%= link_to "Sign up", new_user_registration_path, :class => "btn btn-primary" %>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</nav>
+
+<% if params[:controller].eql?("home") %>
+  <div class="jumbotron">
+    <div class="container jumbo-container">
+      <h1>Devcity Friends!</h1>
+      <h3>Chat with new people around the world.</h3>
+      <p>Meet millions of new people from all over the world, wherever you are. Have a good chat, make new friends or even find the love of your life. Because life is all about the people you meet.</p>
+    </div>
+  </div>
+<% end %>

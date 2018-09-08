@@ -1,0 +1,59 @@
+<div class="row">
+  <div class="col-lg-3">
+    <%= render "shared/info", :user => @user %>
+  </div>
+  <div class="col-lg-9">
+    <div class="card">
+      <div class="card-body">
+        <%= form_for(@post, html: { method: :post }) do |f| %>
+          <div class="form-group">
+            <%= f.text_area :description, autofocus: true, placeholder: "Post your idea", class: "form-control" %>
+          </div>
+          <div class="row" style="float: right;">
+            <div class="col-md-12">
+              <%= f.submit "Post it!", class: "btn btn-primary" %>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+    <div class="my-4">
+      <ul class="nav nav-tabs">
+        <% if @search.present? %>
+          <li class="nav-item">
+            <a class="nav-link active" data-toggle="tab" href="#users">Users</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" data-toggle="tab" href="#posts">Posts</a>
+          </li>
+        <% else %>
+          <li class="nav-item">
+            <a class="nav-link active" data-toggle="tab" href="#timeline">Timeline</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" data-toggle="tab" href="#myposts" id="navMyPost">My Posts</a>
+          </li>
+        <% end %>
+      </ul>
+      <div class="tab-content">
+        <% if @search.present? %>
+          <div id="users" class="tab-pane fade in active show">
+            <%= render "user_list", :users => @users %>
+          </div>
+          <div id="posts" class="tab-pane fade">
+            <%= render "post_list", :posts => @posts %>
+          </div>
+        <% else %>
+          <div id="timeline" class="tab-pane fade in active show">
+            <%= render "post_list", :posts => @timelines %>
+          </div>
+          <div id="myposts" class="tab-pane fade">
+            <%= render "post_list", :posts => @posts %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%= render "friend_list" %>

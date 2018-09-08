@@ -1,0 +1,9 @@
+<% users.each do |user| %>
+  <%= link_to(timelines_path(:email => user.email)) do %>
+    <%= image_tag user.profile_picture.medium.url, :alt => "User Image", :class => "img-thumbnail rounded", :style => "max-width: 100px;" %>
+    <span><%= user.email %></span>
+  <% end %>
+  <p><%= user.bio %></p>
+  <hr>
+<% end %>
+<%= paginate users, theme: 'twitter-bootstrap-4' if @seach.present? %>
