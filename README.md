@@ -1,5 +1,8 @@
 # README
 
+Check this url for testing the app https://devcity.herokuapp.com/
+Check this url to see api documentation https://devcity.herokuapp.com/docs
+
 This README would normally document whatever steps are necessary to get the
 application up and running.
 
@@ -30,8 +33,8 @@ rake db:migrate
 rake db:seed
 ```
 
-```
 ## How to run the test suite
+```
 rspec spec/api/v1/dev_cities_controller_spec.rb
 
 ```
