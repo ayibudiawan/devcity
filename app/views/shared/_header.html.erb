@@ -9,7 +9,7 @@
         <li class="nav-item" style="float: left; margin: 20px;">
           <%= link_to "Timelines", timelines_path %>
         </li>
-        <%= form_for(timelines_path, :url => {:controller => "timelines", :action => "index"}, html: { method: :get, class: "form-inline", style: "margin-right: 20px;" }) do %>
+        <%= form_for(timelines_path, :url => {:controller => "/timelines", :action => "index"}, html: { method: :get, class: "form-inline", style: "margin-right: 20px;" }) do %>
           <div class="form-group">
             <%= text_field_tag :search, @search, placeholder: "Search users or posts", class: "form-control", :required => true %>
           </div>

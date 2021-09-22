@@ -77,3 +77,4 @@ gem "betterlorem"
 gem "apipie-rails"
 gem 'kaminari'
 gem 'bootstrap4-kaminari-views'
+gem 'dotenv-rails'
