@@ -5,7 +5,7 @@ class PostsController < ApplicationController
     @post = Post.new(post_params)
     respond_to do |format|
       if @post.save
-        format.html { redirect_to timelines_path, notice: "Posts successfully createds" }
+        format.html { redirect_to timelines_path, notice: "Posts successfully created" }
       else
         format.html { redirect_to timelines_path, alert: "Description can't be blank" }
       end
