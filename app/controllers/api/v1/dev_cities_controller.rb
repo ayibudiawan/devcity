@@ -1,7 +1,7 @@
 class Api::V1::DevCitiesController < API::BaseController
   api :POST, '/add_friend', 'Add friend from two array of users'
   formats ['json']
-  error 400, "Bad requests"
+  error 400, "Bad requestss"
   param :friends, Array, :desc => "Array of two emails", :required => true
   def add_friend
     add_friend = Activity.friend(params[:friends], "add_friend")
